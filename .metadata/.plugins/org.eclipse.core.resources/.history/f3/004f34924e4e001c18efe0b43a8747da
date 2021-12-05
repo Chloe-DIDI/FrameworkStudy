@@ -1,0 +1,6 @@
+package com.text.spr;
+
+public interface IDAO
+{
+
+}

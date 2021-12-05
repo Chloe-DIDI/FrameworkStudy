@@ -1,0 +1,14 @@
+/*
+ * IDAO.java
+ * - 인터페이스
+ * */
+
+package com.text.spr;
+
+import java.util.List;
+
+public interface IDAO
+{
+	public List<MemberDTO> list();
+
+}

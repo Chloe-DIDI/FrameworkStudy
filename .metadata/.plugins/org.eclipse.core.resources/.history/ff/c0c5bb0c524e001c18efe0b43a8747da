@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+           
+           
+  <!-- ※ 스프링이 제공하는 환경 설정 XML 파일 샘플 -->	           
+  <!--    → 스프링이 생성하고 관리해야 할 객체들에 대한 정보 전달 -->
+
+  <!-- OracleDAO 클래스에 대한 객체 생성 부분 -->
+  <bean id="oracleDAO" class="com.test.spr.OracleDAO"></bean>
+  
+  <bean id="mssqlDAO" class="com.test.spr.MssqlDAO"></bean>
+
+  <!-- MemberList 객체 생성 및 의존성 주입 부분 -->
+  <bean id="member" class="com.test.spr.MemberList">
+  
+  	<!-- setter 메소드 호출을 통한 DI 처리 부분 -->
+  	<property name="dao">
+  		<ref bean="oracleDAO"/>
+  		<!-- <ref bean="mssqlDAO"/> -->
+  	</property>
+  	 
+  </bean>
+
+</beans>

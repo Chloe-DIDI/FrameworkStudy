@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+           
+           
+	<!-- ※ 스프링이 제공하는 환경 설정 XML 파일 샘플 -->	           
+	<!--    → 스프링이 생성하고 관리해야 할 객체들에 대한 정보 전달 -->
+	
+	<!-- OracleDAO 클래스에 대한 객체 정보를 전달 -->
+	<!-- → 필요할 경우 스프링이 이를 확인해서 생성하고 유지 및 관리  -->
+	<bean id="oracleDAO" class="com.test.spr.OracleDAO"></bean>
+	
+	<!-- mssqlDAO 클래스에 대한 객체 정보를 전달 -->
+	<!-- → 필요할 경우 스프링이 이를 확인해서 생성하고 유지 및 관리  -->
+	<bean id="mssqlDAO" class="com.test.spr.MssqlDAO"></bean>
+	
+	<!-- MemberList 클래스에 대한 객체 정보를 전달 -->
+	<!-- → 필요할 경우 스프링이 이를 확인해서 생성하고 유지 및 관리  -->
+	<!-- <bean id="member" class="com.test.spr.MemberList"> -->
+	
+	
+	<!-- 그런데... MemberList 클래스의 경우 -->
+	<!-- 위에서 독립적으로 생성한 DAO 관련 클래스들과 달리
+		 의존 객체에 대한 주입이 필요한 상황 -->
+	<bean id = "member" class="com.test.spr.MemberList">
+		 
+		 
+		 <!-- bean 을 구성하는 과정에서 property 에 객체를 주입할 수 있도록 처리
+		 								--------    ----       
+		 							     dao        oracle or mssql  -->
+		 
+		
+		<property name="dao">
+			<ref bean="oracleDAO"/>
+			
+		</property>
+		 
+	</bean>
+	
+</beans>
